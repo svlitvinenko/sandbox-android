@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Margin -->
+    <dimen name="margin_zero">0dp</dimen>
+    <dimen name="margin_tiny">4dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_xsmall">10dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_large">24dp</dimen>
+
+    <!-- Padding -->
+    <dimen name="padding_medium">16dp</dimen>
+
+    <!-- Constraints -->
+    <dimen name="constraint_match_parent">0dp</dimen>
+
+    <!-- Elevation -->
+    <dimen name="elevation_zero">0dp</dimen>
+    <dimen name="elevation_medium">6dp</dimen>
+
+    <!-- Radius -->
+    <dimen name="corner_radius_medium">12dp</dimen>
+
+    <!-- Size -->
+    <dimen name="image_size_giant">256dp</dimen>
+</resources>

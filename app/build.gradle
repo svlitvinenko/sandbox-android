@@ -1,0 +1,58 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "ru.svlit.sandbox"
+        minSdkVersion 26
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation project(':core:base')
+    implementation project(':core:design-system')
+    implementation project(':core:models')
+    implementation project(':core:network')
+    implementation project(':feature:fines')
+    implementation project(':feature:weather')
+    implementation project(':feature:host')
+
+    implementation platform.androidX.ktx.livedata
+    implementation platform.androidX.ktx.room
+    implementation platform.androidX.ktx.runtime
+    implementation platform.androidX.ktx.viewmodel
+    implementation platform.kotlin.coreKtx
+    implementation platform.kotlin.coroutines.android
+    implementation platform.kotlin.coroutines.core
+    implementation platform.kotlin.stdlib
+    implementation platform.di.kodein
+    implementation platform.di.kodeinAndroid
+}

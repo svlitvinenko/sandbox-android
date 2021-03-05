@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="celsius_degree">°C</string>
+    <string name="fahrenheit_degree">°F</string>
+    <string name="current_weather">Погода сейчас</string>
+</resources>

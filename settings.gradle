@@ -1,0 +1,9 @@
+include ':app'
+rootProject.name = "Sandbox"
+include ':core:design-system'
+include ':core:models'
+include ':feature:fines'
+include ':core:network'
+include ':core:base'
+include ':feature:weather'
+include ':feature:host'
