@@ -10,8 +10,10 @@ import org.kodein.di.bind
 import org.kodein.di.singleton
 import ru.svlit.sandbox.core.base.di.Dependencies
 import ru.svlit.sandbox.core.designsystem.item.di.DesignSystemDependencies
+import ru.svlit.sandbox.core.network.di.NetworkDependencies
 import ru.svlit.sandbox.feature.fines.di.FinesDependencies
 import ru.svlit.sandbox.feature.host.di.HostDependencies
+import ru.svlit.sandbox.feature.nba.di.NbaDependencies
 import ru.svlit.sandbox.feature.weather.di.CurrentWeatherDependencies
 
 /**
@@ -28,9 +30,11 @@ class SandboxApplication : Application(), DIAware, Dependencies {
         import(module)
 
         // Core
+        import(NetworkDependencies.module)
         import(DesignSystemDependencies.module)
 
-        // Entry
+        // Feature
+        import(NbaDependencies.module)
         import(HostDependencies.module)
         import(FinesDependencies.module)
         import(CurrentWeatherDependencies.module)

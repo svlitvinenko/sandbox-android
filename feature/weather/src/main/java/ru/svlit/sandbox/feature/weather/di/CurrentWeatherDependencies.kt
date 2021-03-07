@@ -6,13 +6,16 @@ import ru.svlit.sandbox.core.designsystem.item.adapter.ItemViewHolderFactory
 import ru.svlit.sandbox.core.designsystem.item.adapter.ItemViewHolderFactory.Companion.combinedWith
 import ru.svlit.sandbox.core.designsystem.item.adapter.rule
 import ru.svlit.sandbox.core.network.data.ConnectivityInterceptorImpl
+import ru.svlit.sandbox.feature.nba.data.NbaCreator
 import ru.svlit.sandbox.feature.weather.data.CurrentWeatherRepository
 import ru.svlit.sandbox.feature.weather.data.local.CurrentWeatherLocalDataSourceImpl
 import ru.svlit.sandbox.feature.weather.data.local.ForecastDatabase
 import ru.svlit.sandbox.feature.weather.data.remote.CurrentWeatherApiMapper
 import ru.svlit.sandbox.feature.weather.data.remote.CurrentWeatherRemoteDataSourceImpl
-import ru.svlit.sandbox.feature.weather.presentation.CurrentWeatherViewModel
+import ru.svlit.sandbox.feature.weather.models.presentation.WeatherExpanded
+import ru.svlit.sandbox.feature.weather.presentation.ForecastViewModel
 import ru.svlit.sandbox.feature.weather.presentation.item.WeatherExpandedViewHolderCreator
+import ru.svlit.sandbox.feature.weather.presentation.nba.WeatherNbaCreator
 
 /**
  * Зависимости модуля погоды.
@@ -30,13 +33,21 @@ object CurrentWeatherDependencies : Dependencies {
                 remoteDataSource = CurrentWeatherRemoteDataSourceImpl(instance())
             )
         }
-        bind<() -> CurrentWeatherViewModel>() with provider {
-            { CurrentWeatherViewModel(instance()) }
+        bind<() -> ForecastViewModel>() with provider {
+            { ForecastViewModel(instance()) }
         }
 
         bind<ItemViewHolderFactory>(tag = CurrentWeatherDependencies.javaClass) with singleton {
             val baseItemViewHolderFactory: ItemViewHolderFactory = instance()
             listOf(rule(WeatherExpandedViewHolderCreator())) combinedWith baseItemViewHolderFactory
+        }
+        bind<NbaCreator<*>>().inSet() with singleton { WeatherNbaCreator() }
+
+        bind<ItemViewHolderFactory>("forecast") with singleton {
+            val defaultFactory: ItemViewHolderFactory = instance()
+            defaultFactory + listOf(
+                rule(WeatherExpandedViewHolderCreator())
+            )
         }
     }
 }

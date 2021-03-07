@@ -31,6 +31,9 @@ android {
 }
 
 dependencies {
+    implementation project(':core:base')
+    implementation platform.di.kodein
+    implementation platform.json.gson
     implementation platform.network.loggingInterceptor
     implementation platform.network.retrofit
     implementation platform.network.retrofitCoroutines

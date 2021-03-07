@@ -2,7 +2,6 @@ package ru.svlit.sandbox.feature.fines.presentation
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
-import ru.svlit.sandbox.core.models.TextWrapper
 
 /**
  * Аргументы для запуска экрана Штрафов.
@@ -11,5 +10,5 @@ import ru.svlit.sandbox.core.models.TextWrapper
  */
 @Parcelize
 data class FinesArguments(
-    val title: TextWrapper
+    val count: Int
 ) : Parcelable

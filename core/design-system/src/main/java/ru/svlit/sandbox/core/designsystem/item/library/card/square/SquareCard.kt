@@ -1,7 +1,7 @@
 package ru.svlit.sandbox.core.designsystem.item.library.card.square
 
 import ru.svlit.sandbox.core.designsystem.item.adapter.Event
-import ru.svlit.sandbox.core.designsystem.item.adapter.Item
+import ru.svlit.sandbox.core.designsystem.item.library.carousel.CarouselItem
 import ru.svlit.sandbox.core.models.TextWrapper
 
 /**
@@ -13,4 +13,4 @@ data class SquareCard(
     override val id: String,
     val text: TextWrapper,
     val onClickEvent: Event
-) : Item
+) : CarouselItem

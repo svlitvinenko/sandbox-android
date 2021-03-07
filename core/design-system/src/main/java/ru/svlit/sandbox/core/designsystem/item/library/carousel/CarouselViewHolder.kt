@@ -7,6 +7,7 @@ import ru.svlit.sandbox.core.designsystem.item.adapter.ItemAdapter
 import ru.svlit.sandbox.core.designsystem.item.adapter.ItemViewHolder
 import ru.svlit.sandbox.core.designsystem.item.adapter.ItemViewHolderFactory
 import ru.svlit.sandbox.core.designsystem.item.decoration.BetweenItemOffsetDecoration
+import ru.svlit.sandbox.core.designsystem.item.decoration.Orientation
 
 /**
  * [ItemViewHolder], отрисовывающий [Carousel].
@@ -24,7 +25,7 @@ class CarouselViewHolder(
 
     init {
         recyclerView.adapter = adapter
-        recyclerView.addItemDecoration(BetweenItemOffsetDecoration())
+        recyclerView.addItemDecoration(BetweenItemOffsetDecoration(orientation = Orientation.HORIZONTAL))
     }
 
     override fun bind(item: Carousel) {

@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="ru.svlit.sandbox.feature.weather">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ru.svlit.sandbox.feature.weather">
 
+    <application>
+        <activity
+            android:name=".presentation.ForecastActivity"
+            android:screenOrientation="portrait" />
+    </application>
 </manifest>

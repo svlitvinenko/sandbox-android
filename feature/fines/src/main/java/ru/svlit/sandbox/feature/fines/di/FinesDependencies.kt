@@ -2,9 +2,9 @@ package ru.svlit.sandbox.feature.fines.di
 
 import org.kodein.di.*
 import ru.svlit.sandbox.core.base.di.Dependencies
-import ru.svlit.sandbox.core.base.entry.EntryPoint
-import ru.svlit.sandbox.feature.fines.entry.FinesEntryPoint
 import ru.svlit.sandbox.feature.fines.presentation.FinesViewModel
+import ru.svlit.sandbox.feature.fines.presentation.nba.FinesNbaCreator
+import ru.svlit.sandbox.feature.nba.data.NbaCreator
 
 /**
  * Модуль с зависимостями Штрафов.
@@ -14,7 +14,7 @@ import ru.svlit.sandbox.feature.fines.presentation.FinesViewModel
 object FinesDependencies : Dependencies {
 
     override val module = DI.Module(name = javaClass.simpleName) {
-        bind<EntryPoint<*>>().inSet() with singleton { FinesEntryPoint() }
         bind<() -> FinesViewModel>() with provider { { FinesViewModel() } }
+        bind<NbaCreator<*>>().inSet() with singleton { FinesNbaCreator() }
     }
 }

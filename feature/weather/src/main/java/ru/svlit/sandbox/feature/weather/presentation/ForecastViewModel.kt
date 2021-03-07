@@ -27,7 +27,7 @@ import ru.svlit.sandbox.feature.weather.models.presentation.WeatherExpanded
  *
  * @author Sergei Litvinenko on 14 Feb, 2021.
  */
-class CurrentWeatherViewModel(
+class ForecastViewModel(
     private val currentWeatherRepository: CurrentWeatherRepository
 ) : ViewModel(), EventListener {
 

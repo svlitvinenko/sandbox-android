@@ -41,9 +41,11 @@ dependencies {
     implementation project(':core:design-system')
     implementation project(':core:models')
     implementation project(':core:network')
+    implementation project(':feature:nba')
 
     implementation platform.androidX.ktx.livedata
     implementation platform.androidX.ktx.room
+    implementation platform.androidX.room.runtime
     implementation platform.androidX.ktx.runtime
     implementation platform.androidX.ktx.viewmodel
     implementation platform.di.kodein
@@ -57,6 +59,7 @@ dependencies {
     implementation platform.network.retrofit
     implementation platform.network.retrofitCoroutines
 
+    kapt platform.androidX.room.compiler
     implementation platform.androidX.appcompat
     implementation platform.androidX.materialDesign
     testImplementation platform.test.jUnit4

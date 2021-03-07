@@ -23,15 +23,15 @@ class ItemViewHolderFactory(
             .creator.create(parent, false, eventListener) as ItemViewHolder<Item>
     }
 
+    /**
+     * Создаёт новую фабрику, наполненную правилами [additionalRules] и затем всеми правилами текущей фабрики.
+     */
+    operator fun plus(additionalRules: List<ItemRule<*>>): ItemViewHolderFactory {
+        return ItemViewHolderFactory(additionalRules + rules)
+    }
+
     companion object {
 
-
-        /**
-         * Создаёт новую фабрику, наполненную правилами [additionalRules] и затем всеми правилами текущей фабрики.
-         */
-        operator fun ItemViewHolderFactory.plus(additionalRules: List<ItemRule<*>>): ItemViewHolderFactory {
-            return ItemViewHolderFactory(additionalRules + rules)
-        }
 
         /**
          * Создаёт новую фабрику, наполненную правилами [this] и затем всеми правилами фабрики [factory].

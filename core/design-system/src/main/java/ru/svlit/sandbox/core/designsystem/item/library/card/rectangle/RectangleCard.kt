@@ -1,7 +1,8 @@
 package ru.svlit.sandbox.core.designsystem.item.library.card.rectangle
 
 import ru.svlit.sandbox.core.designsystem.item.adapter.Event
-import ru.svlit.sandbox.core.designsystem.item.adapter.Item
+import ru.svlit.sandbox.core.designsystem.item.library.carousel.CarouselItem
+import ru.svlit.sandbox.core.models.TextWrapper
 
 /**
  * Прямоугольная карточка.
@@ -10,7 +11,7 @@ import ru.svlit.sandbox.core.designsystem.item.adapter.Item
  */
 data class RectangleCard(
     override val id: String,
-    val title: String,
-    val subtitle: String,
+    val title: TextWrapper,
+    val subtitle: TextWrapper,
     val onClickEvent: Event
-) : Item
+) : CarouselItem

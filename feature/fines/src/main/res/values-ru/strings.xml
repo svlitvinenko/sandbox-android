@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="sts_pattern_validator_failure">Проверьте СТС ещё раз. Номер написан где-то на бумажке. Была бы у меня машина — подсказал бы, где именно</string>
+    <string name="vu_pattern_validator_failure">Проверьте ВУ ещё раз. Его номер — в пункте №5</string>
+    <string name="grz_pattern_validator_failure">Проверьте номер машины ещё раз</string>
+    <string name="vu_length_validator_failure">Проверьте длину номера ВУ — должно быть 10 символов</string>
+    <string name="sts_length_validator_failure">Проверьте длину номера СТС — должно быть 10 символов</string>
+    <string name="emptiness_validator_failure">Заполните поле</string>
+    <string name="action_search_fines">Искать штрафы</string>
+
+    <plurals name="number_of_fines">
+        <item quantity="one">%1$s штраф</item>
+        <item quantity="few">%1$s штрафа</item>
+        <item quantity="many">%1$s штрафов</item>
+        <item quantity="other">%1$s штрафов</item>
+    </plurals>
+</resources>

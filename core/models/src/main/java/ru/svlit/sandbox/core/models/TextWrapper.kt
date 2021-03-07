@@ -2,6 +2,7 @@ package ru.svlit.sandbox.core.models
 
 import android.content.Context
 import android.os.Parcelable
+import androidx.annotation.PluralsRes
 import androidx.annotation.StringRes
 import kotlinx.parcelize.Parcelize
 
@@ -19,6 +20,10 @@ sealed class TextWrapper : Parcelable {
 
         operator fun invoke(value: String, formatArgs: List<String> = listOf()): TextWrapper {
             return ByString(value, formatArgs)
+        }
+
+        operator fun invoke(@PluralsRes resource: Int, quantity: Int, formatArgs: List<String> = listOf()): TextWrapper {
+            return ByPlural(resource, quantity, formatArgs)
         }
     }
 
@@ -45,5 +50,24 @@ sealed class TextWrapper : Parcelable {
     @Parcelize
     data class ByString(val value: String, private val formatArgs: List<String> = listOf()) : TextWrapper() {
         override fun getText(context: Context): String = String.format(value, formatArgs)
+    }
+
+    @Parcelize
+    data class ByPlural(
+        @PluralsRes private val resource: Int,
+        private val quantity: Int,
+        private val formatArgs: List<String> = listOf()
+    ) : TextWrapper() {
+
+        constructor(
+            @PluralsRes resource: Int,
+            quantity: Int,
+            vararg formatArgs: String
+        ) : this(resource, quantity, formatArgs.toList())
+
+        override fun getText(context: Context): String {
+            return context.resources.getQuantityString(resource, quantity, *formatArgs.toTypedArray())
+        }
+
     }
 }

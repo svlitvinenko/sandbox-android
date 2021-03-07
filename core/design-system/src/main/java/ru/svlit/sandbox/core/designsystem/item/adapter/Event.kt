@@ -8,7 +8,11 @@ interface NavigationEvent : Event {
     fun navigate(activity: Activity)
 }
 
-object Back : Event
+object Back : NavigationEvent {
+    override fun navigate(activity: Activity) {
+        activity.finish()
+    }
+}
 
 object FinishEvent : NavigationEvent {
     override fun navigate(activity: Activity) {

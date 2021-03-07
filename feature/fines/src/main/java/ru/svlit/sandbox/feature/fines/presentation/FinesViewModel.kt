@@ -23,6 +23,7 @@ import ru.svlit.sandbox.core.designsystem.item.library.editable.string.Validatio
 import ru.svlit.sandbox.core.designsystem.item.library.editable.string.ValidationStrategy.SOFT
 import ru.svlit.sandbox.core.designsystem.item.library.readonly.string.EditableString
 import ru.svlit.sandbox.core.designsystem.item.library.readonly.string.EditableStringValueChangedEvent
+import ru.svlit.sandbox.core.models.TextWrapper.*
 import ru.svlit.sandbox.feature.fines.R
 import java.util.*
 
@@ -34,7 +35,7 @@ import java.util.*
 class FinesViewModel : ViewModel(), EventListener {
 
     private val contentMutableState: MutableStateFlow<FinesContent> =
-        MutableStateFlow(FinesContent(ru.svlit.sandbox.core.models.TextWrapper.ByString(""), emptyList(), emptyList()))
+        MutableStateFlow(FinesContent(ByString(""), emptyList(), emptyList()))
     val contentState: StateFlow<FinesContent> = contentMutableState
 
     private val navigationEventChannel = Channel<NavigationEvent>()
@@ -43,12 +44,12 @@ class FinesViewModel : ViewModel(), EventListener {
     fun initialize(arguments: FinesArguments) {
         viewModelScope.launch {
             contentMutableState.value = FinesContent(
-                title = arguments.title,
+                title = ByString("Штрафы"),
                 mainItems = listOf(
                     AnimatedInfo(
                         id = "loading_info",
-                        title = arguments.title,
-                        subtitle = ru.svlit.sandbox.core.models.TextWrapper.ByString(""),
+                        title = ByString("Штрафы ГИБДД"),
+                        subtitle = ByPlural(R.plurals.number_of_fines, arguments.count, arguments.count.toString()),
                         animation = AnimationWrapper.ByResource(R.raw.anim_driver_license)
                     )
                 ),
@@ -56,7 +57,7 @@ class FinesViewModel : ViewModel(), EventListener {
             )
             delay(2000L)
             contentMutableState.value = FinesContent(
-                title = arguments.title,
+                title = ByString("Штрафы"),
                 mainItems = listOf(
                     EditableString(
                         id = "vu",
@@ -70,9 +71,9 @@ class FinesViewModel : ViewModel(), EventListener {
                     ),
                     ReadonlyString(
                         id = "sts_and_grz_description_1",
-                        title = ru.svlit.sandbox.core.models.TextWrapper.ByString("Штрафы чаще оформляют на машину"),
+                        title = ByString("Штрафы чаще оформляют на машину"),
                         titleStyleType = BODY_1,
-                        body = ru.svlit.sandbox.core.models.TextWrapper.ByString("Заполните следующие поля, чтобы получить более точные данные."),
+                        body = ByString("Заполните следующие поля, чтобы получить более точные данные."),
                         bodyStyleType = SECONDARY
                     ),
                     EditableString(
@@ -99,7 +100,7 @@ class FinesViewModel : ViewModel(), EventListener {
                 bottomItems = listOf(
                     ButtonItem(
                         id = "confirm_button",
-                        text = ru.svlit.sandbox.core.models.TextWrapper.ByResource(R.string.action_search_fines),
+                        text = ByResource(R.string.action_search_fines),
                         onClickEvent = ConfirmEvent
                     )
                 )

@@ -39,6 +39,7 @@ dependencies {
     implementation project(':core:models')
     implementation project(':core:network')
     implementation project(':feature:fines')
+    implementation project(':feature:nba')
     implementation project(':feature:weather')
 
     implementation platform.androidX.ktx.livedata
@@ -50,6 +51,7 @@ dependencies {
     implementation platform.kotlin.coreKtx
     implementation platform.kotlin.coroutines.android
     implementation platform.kotlin.coroutines.core
+    implementation platform.json.gson
 
     implementation platform.kotlin.coreKtx
     implementation platform.androidX.appcompat

@@ -44,11 +44,9 @@ dependencies {
     implementation project(':feature:fines')
     implementation project(':feature:weather')
     implementation project(':feature:host')
+    implementation project(':feature:nba')
 
-    implementation platform.androidX.ktx.livedata
-    implementation platform.androidX.ktx.room
     implementation platform.androidX.ktx.runtime
-    implementation platform.androidX.ktx.viewmodel
     implementation platform.kotlin.coreKtx
     implementation platform.kotlin.coroutines.android
     implementation platform.kotlin.coroutines.core

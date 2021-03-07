@@ -42,6 +42,7 @@ dependencies {
     implementation project(':core:design-system')
     implementation project(':core:models')
     implementation project(':core:network')
+    implementation project(':feature:nba')
 
     implementation platform.androidX.ktx.livedata
     implementation platform.androidX.ktx.room

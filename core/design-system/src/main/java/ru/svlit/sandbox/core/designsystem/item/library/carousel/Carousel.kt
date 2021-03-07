@@ -9,5 +9,5 @@ import ru.svlit.sandbox.core.designsystem.item.adapter.Item
  */
 data class Carousel(
     override val id: String,
-    val items: List<Item>
+    val items: List<CarouselItem>
 ) : Item

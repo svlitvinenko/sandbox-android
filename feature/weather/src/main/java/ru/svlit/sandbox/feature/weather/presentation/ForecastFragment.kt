@@ -21,14 +21,14 @@ import ru.svlit.sandbox.core.designsystem.item.decoration.FirstItemOffsetDecorat
 import ru.svlit.sandbox.core.designsystem.item.decoration.LastItemOffsetDecoration
 import ru.svlit.sandbox.feature.weather.models.presentation.CurrentWeatherArguments
 
-class CurrentWeatherFragment : Fragment(), DIAware, EventListener {
+class ForecastFragment : Fragment(), DIAware, EventListener {
     override val di by di()
 
     private lateinit var binding: SimpleListBinding
     private lateinit var adapter: ItemAdapter
-    private val viewModelSupplier: () -> CurrentWeatherViewModel by instance()
-    private val itemViewHolderFactory: ItemViewHolderFactory by instance()
-    private lateinit var viewModel: CurrentWeatherViewModel
+    private val viewModelSupplier: () -> ForecastViewModel by instance()
+    private val itemViewHolderFactory: ItemViewHolderFactory by instance("forecast")
+    private lateinit var viewModel: ForecastViewModel
 
     override
 
@@ -37,7 +37,7 @@ class CurrentWeatherFragment : Fragment(), DIAware, EventListener {
         viewModel = ViewModelProvider(
             viewModelStore,
             ViewModelProviderFactory(viewModelSupplier) { it.initialize() }
-        )[CurrentWeatherViewModel::class.java]
+        )[ForecastViewModel::class.java]
     }
 
     override fun onCreateView(
@@ -77,8 +77,8 @@ class CurrentWeatherFragment : Fragment(), DIAware, EventListener {
     companion object {
 
         const val TAG = "CurrentWeatherFragment"
-        fun newInstance(arguments: CurrentWeatherArguments): CurrentWeatherFragment {
-            return CurrentWeatherFragment()
+        fun newInstance(arguments: CurrentWeatherArguments): ForecastFragment {
+            return ForecastFragment()
         }
     }
 }

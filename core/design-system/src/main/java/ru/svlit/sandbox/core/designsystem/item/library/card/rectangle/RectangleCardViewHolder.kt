@@ -23,10 +23,13 @@ class RectangleCardViewHolder(
     private val subtitleTextView: TextView = itemView.findViewById(R.id.subtitle_text_view)
 
     override fun bind(item: RectangleCard) {
-        titleTextView.text = item.title
-        titleTextView.setVisibilityBy(item.title)
-        subtitleTextView.text = item.subtitle
-        subtitleTextView.setVisibilityBy(item.subtitle)
+        val title: String = item.title.getText(itemView.context)
+        titleTextView.text = title
+        titleTextView.setVisibilityBy(title)
+
+        val subtitle: String = item.subtitle.getText(itemView.context)
+        subtitleTextView.text = subtitle
+        subtitleTextView.setVisibilityBy(subtitle)
         itemView.setOnClickListener(debounce { eventListener.onEvent(item.onClickEvent) })
     }
 
