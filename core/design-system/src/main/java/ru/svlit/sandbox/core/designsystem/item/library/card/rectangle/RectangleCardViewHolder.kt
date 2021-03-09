@@ -4,10 +4,11 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.TextView
+import kotlinx.coroutines.MainScope
 import ru.svlit.sandbox.core.designsystem.R
 import ru.svlit.sandbox.core.designsystem.item.adapter.EventListener
 import ru.svlit.sandbox.core.designsystem.item.adapter.ItemViewHolder
-import ru.svlit.sandbox.core.designsystem.item.library.button.DebouncingOnClickListener.Companion.debounce
+import ru.svlit.sandbox.core.designsystem.item.library.button.debounce
 
 /**
  * [ItemViewHolder], отображающий [RectangleCard].
@@ -30,7 +31,7 @@ class RectangleCardViewHolder(
         val subtitle: String = item.subtitle.getText(itemView.context)
         subtitleTextView.text = subtitle
         subtitleTextView.setVisibilityBy(subtitle)
-        itemView.setOnClickListener(debounce { eventListener.onEvent(item.onClickEvent) })
+        itemView.setOnClickListener(debounce(coroutineScope = MainScope()) { eventListener.onEvent(item.onClickEvent) })
     }
 
     private fun TextView.setVisibilityBy(text: String) {

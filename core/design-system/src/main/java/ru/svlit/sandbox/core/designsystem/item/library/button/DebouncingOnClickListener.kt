@@ -1,29 +1,24 @@
 package ru.svlit.sandbox.core.designsystem.item.library.button
 
-import android.os.Handler
-import android.os.Looper
-import android.view.View
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 /**
  * Debouncing-слушатель нажатий.
  *
  * @author Sergei Litvinenko on 22 Feb, 2021.
  */
-data class DebouncingOnClickListener(
-    private val timeoutMs: Long = 200L,
-    private val onClickListener: View.OnClickListener
-) : View.OnClickListener {
-
-    override fun onClick(view: View) {
-        handler.postDelayed({ onClickListener.onClick(view) }, timeoutMs)
-    }
-
-    companion object {
-        private val handler: Handler = Handler(Looper.getMainLooper())
-
-        fun debounce(
-            timeoutMs: Long = 200L,
-            onClickListener: View.OnClickListener
-        ) = DebouncingOnClickListener(timeoutMs, onClickListener)
+fun <T> debounce(delayMs: Long = 500, coroutineScope: CoroutineScope, action: (T) -> Unit): (T) -> Unit {
+    var job: Job? = null
+    return { value: T ->
+        if (job == null) {
+            job = coroutineScope.launch {
+                action.invoke(value)
+                delay(delayMs)
+                job = null
+            }
+        }
     }
 }

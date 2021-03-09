@@ -2,10 +2,11 @@ package ru.svlit.sandbox.core.designsystem.item.library.card.square
 
 import android.view.View
 import android.widget.TextView
+import kotlinx.coroutines.MainScope
 import ru.svlit.sandbox.core.designsystem.R
 import ru.svlit.sandbox.core.designsystem.item.adapter.EventListener
 import ru.svlit.sandbox.core.designsystem.item.adapter.ItemViewHolder
-import ru.svlit.sandbox.core.designsystem.item.library.button.DebouncingOnClickListener.Companion.debounce
+import ru.svlit.sandbox.core.designsystem.item.library.button.debounce
 
 /**
  * [ItemViewHolder], отображающий [SquareCard].
@@ -18,7 +19,7 @@ class SquareCardViewHolder(itemView: View, private val eventListener: EventListe
 
     override fun bind(item: SquareCard) {
         textView.text = item.text.getText(itemView.context)
-        itemView.setOnClickListener(debounce {
+        itemView.setOnClickListener(debounce(coroutineScope = MainScope()) {
             eventListener.onEvent(item.onClickEvent)
         })
     }
